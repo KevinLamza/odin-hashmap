@@ -86,34 +86,52 @@ export const LinkedList = class {
       prev.nextNode = null;
     }
   }
-  contains(value) {
+  contains(key) {
     if (this.head === null) {
-      console.log('Invalid operation');
-      return;
+      // console.log('Invalid operation');
+      return false;
     } else {
       let tmp = this.head;
-      if (tmp.value === value) return true;
+      if (tmp.key === key) return true;
       while (tmp.nextNode != null) {
         tmp = tmp.nextNode;
-        if (tmp.value === value) {
+        if (tmp.key === key) {
           return true;
         }
       }
       return false;
     }
   }
-  find(value) {
+  findValue(key) {
     if (this.head === null) {
       console.log('Invalid operation');
       return;
     } else {
       let tmp = this.head;
       let index = 0;
-      if (tmp.value === value) return index;
+      if (tmp.key === key) return tmp.value;
       while (tmp.nextNode != null) {
         tmp = tmp.nextNode;
         index = ++index;
-        if (tmp.value === value) {
+        if (tmp.key === key) {
+          return tmp.value;
+        }
+      }
+      return null;
+    }
+  }
+  findIndex(key) {
+    if (this.head === null) {
+      // console.log('Invalid operation');
+      return false;
+    } else {
+      let tmp = this.head;
+      let index = 0;
+      if (tmp.key === key) return index;
+      while (tmp.nextNode != null) {
+        tmp = tmp.nextNode;
+        index = ++index;
+        if (tmp.key === key) {
           return index;
         }
       }
@@ -153,10 +171,10 @@ export const LinkedList = class {
     }
   }
   removeAt(index) {
-    if (this.head === null) {
-      console.log('Invalid operation');
-      return;
-    }
+    // if (this.head === null) {
+    //   console.log('Invalid operation');
+    //   return;
+    // }
     let tmp = this.head;
     let prev = null;
     if (index === 0) this.head = this.head.nextNode;
@@ -168,6 +186,30 @@ export const LinkedList = class {
       }
       prev.nextNode = tmp.nextNode;
     }
+  }
+  allKeys() {
+    let tmp = this.head;
+    if (tmp != null) {
+      let result = [];
+      result.push(tmp.key);
+      while (tmp.nextNode != null) {
+        tmp = tmp.nextNode;
+        result.push(tmp.key);
+      }
+      return result;
+    } else return null;
+  }
+  allValues() {
+    let tmp = this.head;
+    if (tmp != null) {
+      let result = [];
+      result.push(tmp.value);
+      while (tmp.nextNode != null) {
+        tmp = tmp.nextNode;
+        result.push(tmp.value);
+      }
+      return result;
+    } else return null;
   }
 };
 
