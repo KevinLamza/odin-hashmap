@@ -49,6 +49,16 @@ class HashMap {
 
     return hashCode;
   }
+  // hash(key) {
+  //   const stringKey = String(key);
+  //   let hash = 5381;
+
+  //   for (const char of stringKey) {
+  //     hash = (hash * 33) ^ char.charCodeAt(); // https://gist.github.com/eplawless/52813b1d8ad9af510d85?permalink_comment_id=3367765#gistcomment-3367765
+  //   }
+
+  //   return Math.abs(hash) % this.buckets.length;
+  // }
   set(key, value) {
     const hashCode = this.hash(key);
     if (Object.keys(this.buckets[hashCode]).length === 0) {
