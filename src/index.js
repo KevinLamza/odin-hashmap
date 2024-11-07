@@ -1,6 +1,9 @@
 // Because of webpack, CSS rules need to be imported here and not in the .html file
 // import './styles.css';
 
+import { LinkedList } from './linkedList';
+import { Node } from './linkedList';
+
 // Another webpack check
 if (process.env.NODE_ENV !== 'production') {
   console.log('Looks like we are in development mode!');
@@ -48,14 +51,14 @@ class HashMap {
   set(key, value) {
     const hashCode = this.hash(key);
     this.buckets[hashCode][key] = value;
-    if (this.length() / this.buckets.length >= 0.75) {
+    if (this.length() / this.buckets.length > 0.75) {
       // let newList = new HashMap(this.buckets.length * 2);
       // let oldList = this;
       // for (let i = 0; i < this.length(); i++) {
       //   newList.set(oldList.entries()[i][0], oldList.entries()[i][1]);
       // }
       let copyList = this.entries();
-      console.log(copyList);
+      // console.log(copyList);
       let increaseBy = this.buckets.length;
       for (let i = 0; i < increaseBy; i++) {
         this.buckets.push({});
@@ -135,28 +138,18 @@ class HashMap {
 
 const test = new HashMap();
 
-test.set('test1', '8');
-test.set('test2', '8');
-test.set('test3', '8');
-test.set('test4', '8');
-test.set('test5', '8');
-test.set('test6', '8');
-test.set('test7', '8');
-test.set('test8', '8');
-test.set('test9', '8');
-test.set('test10', '8');
-test.set('test11', '8');
-test.set('test12', '8');
-
-test.set('test13', '8');
-test.set('test14', '8');
-test.set('test15', '8');
-test.set('test16', '8');
-test.set('test17', '8');
-test.set('test18', '8');
-test.set('test19', '8');
-test.set('test20', '8');
-test.set('test21', '8');
+test.set('apple', 'red');
+test.set('banana', 'yellow');
+test.set('carrot', 'orange');
+test.set('dog', 'brown');
+test.set('elephant', 'gray');
+test.set('frog', 'green');
+test.set('grape', 'purple');
+test.set('hat', 'black');
+test.set('ice cream', 'white');
+test.set('jacket', 'blue');
+test.set('kite', 'pink');
+test.set('lion', 'golden');
+test.set('moon', 'silver');
 
 console.log(test);
-// console.log(test.entries());
